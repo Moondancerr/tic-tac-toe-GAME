@@ -1,12 +1,47 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Portfolio</title>
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Simple styling if you don't have style.css yet */
+    #board {
+      display: grid;
+      grid-template-columns: repeat(3, 100px);
+      grid-gap: 5px;
+      margin-top: 20px;
+    }
+    .cell {
+      width: 100px;
+      height: 100px;
+      font-size: 2em;
+      text-align: center;
+      vertical-align: middle;
+      background-color: #f0f0f0;
+      cursor: pointer;
+      border: 1px solid #999;
+    }
+  </style>
 </head>
 <body>
-  <h1>Welcome to My Portfolio</h1>
-  <p>This is my GitHub Pages site.</p>
+  <h1>Tic Tac Toe</h1>
+  <div id="board"></div>
+  <script>
+    const board = document.getElementById('board');
+    let currentPlayer = 'X';
+    
+    for (let i = 0; i < 9; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.addEventListener('click', () => {
+        if (!cell.textContent) {
+          cell.textContent = currentPlayer;
+          currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        }
+      });
+      board.appendChild(cell);
+    }
+  </script>
 </body>
 </html>
